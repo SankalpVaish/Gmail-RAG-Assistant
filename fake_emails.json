@@ -1,0 +1,34 @@
+[
+    {
+        "user_id": "Sankalp@example.com",
+        "sender": "finance.lead@company.com",
+        "recipient": "Sankalp@example.com",
+        "subject": "Q4 Budget Discussion",
+        "timestamp": "2025-10-15T09:00:00Z",
+        "body": "Hi Sankalp, regarding the Q4 budget, we have allocated $50,000 for the API integration project. Please review the spreadsheet."
+    },
+    {
+        "user_id": "Sankalp@example.com",
+        "sender": "hr@company.com",
+        "recipient": "Sankalp@example.com",
+        "subject": "Benefit Enrollment",
+        "timestamp": "2025-10-16T11:30:00Z",
+        "body": "Reminder: The window for health insurance enrollment closes this Friday. Please submit your forms."
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "marketing@company.com",
+        "recipient": "bob@example.com",
+        "subject": "Product Launch Timeline",
+        "timestamp": "2025-11-01T14:00:00Z",
+        "body": "Hey Bob, the new product launch is set for December 12th. We need the social media assets ready by next week."
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "design@company.com",
+        "recipient": "bob@example.com",
+        "subject": "New Logo Assets",
+        "timestamp": "2025-11-02T10:15:00Z",
+        "body": "I have uploaded the high-res logos for the integration project. You can find them in the shared folder."
+    }
+]

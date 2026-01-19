@@ -1,0 +1,17 @@
+# ---- Google Gmail API ----
+google-api-python-client==2.118.0
+google-auth==2.27.0
+google-auth-oauthlib==1.2.0
+httplib2==0.22.0
+pyparsing==2.4.7
+
+# ---- Email parsing ----
+beautifulsoup4==4.12.3
+
+# ---- Vector DB ----
+chromadb==0.4.24
+
+# ---- Embeddings ----
+torch==2.2.1
+transformers==4.38.2
+sentence-transformers==2.6.1

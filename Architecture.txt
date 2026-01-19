@@ -1,0 +1,12 @@
+Architecture Document Draft
+
+
+System Design: A local RAG pipeline ensures privacy and follows technical constraints.
+
+LLM Selection (Llama 3): Selected for high performance-to-size ratio and native support in Ollama.
+
+Vector DB (ChromaDB/PGVector): ChromaDB was chosen for its lightweight local persistence and robust metadata filtering, which is essential for multi-user isolation.
+
+Embedding Model (all-MiniLM-L6-v2): A standard open-source choice that balances fast inference (embedding time) with semantic accuracy.
+
+Multi-User Approach: Implemented via Metadata Filtering. This ensures that no user can retrieve another’s data, meeting the "Security Requirements" without the overhead of maintaining dozens of separate databases.
