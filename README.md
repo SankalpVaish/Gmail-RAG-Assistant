@@ -108,9 +108,15 @@ FakeDemo.py	A script that demonstrates the Multi-User Support bonus by attemptin
 
 README.md	This file- overview, setup instructions, and file descriptions.
 ________________________________________
+
 Run FakeDemo.py file to see a small demo of how the system works on fake dataset.
+
 References
+
 •	Gmail API: https://developers.google.com/gmail/api
+
 •	ChromaDB: https://www.trychroma.com/
+
 •	Ollama: https://ollama.com/
+
 •	SentenceTransformers: https://www.sbert.net/
