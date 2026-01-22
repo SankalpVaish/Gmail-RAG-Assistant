@@ -2,10 +2,12 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 import requests
 import time
+from Extract_emails import get_gmail_service, get_user_email
 
 # 1. Load ChromaDB
 client = chromadb.PersistentClient(path="chroma_db")
-target_user = "sankalp.vaish14@gmail.com"
+service = get_gmail_service()
+target_user = get_user_email(service) 
 collection = client.get_collection("gmail_emails")
 
 # 2. Load embedding model 
@@ -16,7 +18,7 @@ user_a = target_user
 user_b = "XYZ@example.com"
 
 print("--- Security Test: XYZ searching for my's data ---")
-malicious_query = "What is Sankalp's secret order number?" 
+malicious_query = "What is Sankalp's Indusind Bank account transaction history?" 
 
 results = collection.query(
     query_embeddings=embedding_model.encode([malicious_query]).tolist(),
