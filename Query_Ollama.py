@@ -2,10 +2,12 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 import requests
 import time
+from Extract_emails import get_gmail_service, get_user_email
 
 # 1. Load ChromaDB
 client = chromadb.PersistentClient(path="chroma_db")
-target_user = "sankalp.vaish14@gmail.com"
+service = get_gmail_service()
+target_user = get_user_email(service) 
 collection = client.get_collection("gmail_emails")
 
 # 2. Load embedding model (SAME as ingestion)
@@ -14,7 +16,7 @@ embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 # 3. User question
 # query = "What is order status of 6364090?"
 # query = "What is order status of my TATA 1mg order?"
-query = "Where is my Beyoung order and what does it contain?"
+query = "Give updates about my Indusind Bank account and recent transactions. without mentioning any sensitive info."
 
 query_embedding = embedding_model.encode(query).tolist()
 

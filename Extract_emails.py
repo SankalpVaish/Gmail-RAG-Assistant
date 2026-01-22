@@ -110,52 +110,52 @@ def chunk_text(text, chunk_size=500):
         for i in range(0, len(text), chunk_size)
     ]
 
+if __name__ == "__main__":
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
-
-chroma_client = chromadb.PersistentClient(
-    path="chroma_db"
-)
-collection = chroma_client.get_or_create_collection("gmail_emails")
-
-def store_chunks(chunks, metadata, user_id):
-    embeddings = embedding_model.encode(chunks).tolist()
-    
-    for i, chunk in enumerate(chunks):
-        # Add user_id to the metadata dictionary for filtering
-        meta = metadata.copy()
-        meta["user_id"] = user_id 
-        
-        collection.add(
-            documents=[chunk],
-            embeddings=[embeddings[i]],
-            metadatas=[meta],
-            ids=[f"{user_id}_{metadata['subject']}_{i}"]
-        )
-
-service = get_gmail_service()
-current_user_email = get_user_email(service) 
-print(f"Logged in as: {current_user_email}")
-
-messages = list_messages(service)
-start_time = time.time()
-print(f"Fetched {len(messages)} messages. Processing...")
-for msg in messages:
-    email = get_message_content(service, msg['id'])
-    chunks = chunk_text(email['body'])
-
-    store_chunks(
-        chunks,
-        {
-            "from": email["from"],
-            "subject": email["subject"],
-            "date": email["date"]
-        },
-        current_user_email
+    chroma_client = chromadb.PersistentClient(
+        path="chroma_db"
     )
-end_time = time.time()
-print(f"Processed and stored emails in {end_time - start_time:.2f} seconds.")
-print("Gmail extraction complete")
+    collection = chroma_client.get_or_create_collection("gmail_emails")
+
+    def store_chunks(chunks, metadata, user_id):
+        embeddings = embedding_model.encode(chunks).tolist()
+        
+        for i, chunk in enumerate(chunks):
+            # Add user_id to the metadata dictionary for filtering
+            meta = metadata.copy()
+            meta["user_id"] = user_id 
+            
+            collection.add(
+                documents=[chunk],
+                embeddings=[embeddings[i]],
+                metadatas=[meta],
+                ids=[f"{user_id}_{metadata['subject']}_{i}"]
+            )
+
+    service = get_gmail_service()
+    current_user_email = get_user_email(service) 
+    print(f"Logged in as: {current_user_email}")
+
+    messages = list_messages(service)
+    start_time = time.time()
+    print(f"Fetched {len(messages)} messages. Processing...")
+    for msg in messages:
+        email = get_message_content(service, msg['id'])
+        chunks = chunk_text(email['body'])
+
+        store_chunks(
+            chunks,
+            {
+                "from": email["from"],
+                "subject": email["subject"],
+                "date": email["date"]
+            },
+            current_user_email
+        )
+    end_time = time.time()
+    print(f"Processed and stored emails in {end_time - start_time:.2f} seconds.")
+    print("Gmail extraction complete")
 
 
 
