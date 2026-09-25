@@ -1,0 +1,130 @@
+[
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "finance.lead@company.com",
+        "recipient": "sankalp@example.com",
+        "subject": "Q4 Budget Discussion",
+        "timestamp": "2025-10-15T09:00:00Z",
+        "body": "Hi Sankalp, regarding the Q4 budget, we have allocated $50,000 for the API integration project. Please review the spreadsheet and let me know if you need additional resources. The deadline for budget approval is next Friday."
+    },
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "hr@company.com",
+        "recipient": "sankalp@example.com",
+        "subject": "Benefit Enrollment Reminder",
+        "timestamp": "2025-10-16T11:30:00Z",
+        "body": "Reminder: The window for health insurance enrollment closes this Friday, October 20th. Please submit your forms by 5 PM EST. You can choose between the PPO plan ($250/month) or the HMO plan ($180/month). Dental and vision coverage are optional add-ons."
+    },
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "orders@amazon.com",
+        "recipient": "sankalp@example.com",
+        "subject": "Your Amazon order #402-8923456-1234567 has shipped",
+        "timestamp": "2025-10-18T14:22:00Z",
+        "body": "Hello Sankalp, Good news! Your order has shipped. Package tracking: 1Z999AA10123456784. Delivery estimate: October 21, 2025. Items: Logitech MX Master 3S Mouse ($99.99), USB-C Hub 7-in-1 ($34.99). Total: $134.98. Track your package at amazon.com/tracking"
+    },
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "noreply@github.com",
+        "recipient": "sankalp@example.com",
+        "subject": "[SecurityAlert] New SSH key added to your account",
+        "timestamp": "2025-10-19T08:15:00Z",
+        "body": "A new SSH key was just added to your GitHub account. Key fingerprint: SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8. Added from IP: 203.0.113.42. Location: San Francisco, CA. If this wasn't you, please secure your account immediately at github.com/settings/security"
+    },
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "team@vercel.com",
+        "recipient": "sankalp@example.com",
+        "subject": "Your deployment is ready",
+        "timestamp": "2025-10-20T16:45:00Z",
+        "body": "Your project 'gmail-rag-assistant' has been deployed to production. Domain: gmail-rag-assistant.vercel.app. Build time: 42s. Status: Ready. All checks passed. View logs at vercel.com/dashboard"
+    },
+    {
+        "user_id": "sankalp@example.com",
+        "sender": "statements@chase.com",
+        "recipient": "sankalp@example.com",
+        "subject": "Your October credit card statement is ready",
+        "timestamp": "2025-10-21T06:00:00Z",
+        "body": "Your Chase Sapphire Reserve statement for the period ending October 20, 2025 is now available. Statement balance: $2,847.32. Minimum payment due: $35. Payment due date: November 15, 2025. Total rewards earned this month: 4,250 points. Download your statement at chase.com/statements"
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "marketing@company.com",
+        "recipient": "bob@example.com",
+        "subject": "Product Launch Timeline - ACTION REQUIRED",
+        "timestamp": "2025-11-01T14:00:00Z",
+        "body": "Hey Bob, the new product launch is set for December 12th. We need the social media assets ready by next week (November 8th). Please coordinate with design for the following: Instagram posts (10), Twitter header, LinkedIn carousel (5 slides), and YouTube thumbnail. Budget approved: $8,000 for paid campaigns."
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "design@company.com",
+        "recipient": "bob@example.com",
+        "subject": "New Logo Assets Available",
+        "timestamp": "2025-11-02T10:15:00Z",
+        "body": "Hi Bob, I've uploaded the high-resolution logos for the integration project. You can find them in the shared Dropbox folder under /2025/November/Logos. Files include: logo_primary.svg, logo_white.svg, logo_black.png (4000x4000), and logo_horizontal.eps. Let me know if you need any other formats!"
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "flights@united.com",
+        "recipient": "bob@example.com",
+        "subject": "Your flight to Austin is confirmed - UA 1847",
+        "timestamp": "2025-11-03T18:30:00Z",
+        "body": "Confirmation code: ABC123. Flight UA 1847 from San Francisco (SFO) to Austin (AUS). Date: November 15, 2025. Departure: 6:45 AM, Arrival: 12:10 PM CST. Seat: 12A (Window). Checked bags: 1. Check in opens 24 hours before departure. Download boarding pass to your phone."
+    },
+    {
+        "user_id": "bob@example.com",
+        "sender": "reservations@marriott.com",
+        "recipient": "bob@example.com",
+        "subject": "Reservation Confirmation - Marriott Downtown Austin",
+        "timestamp": "2025-11-03T18:45:00Z",
+        "body": "Thank you for choosing Marriott! Confirmation #: 987654321. Check-in: November 15, 2025 (3:00 PM). Check-out: November 18, 2025 (12:00 PM). Room: Deluxe King with city view. Rate: $189/night + taxes. Total: $647.34. Bonvoy points earned: 1,941. Complimentary WiFi and breakfast included."
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "support@stripe.com",
+        "recipient": "alice@example.com",
+        "subject": "Your Stripe payout of $12,847.50 is on the way",
+        "timestamp": "2025-10-22T09:12:00Z",
+        "body": "Hi Alice, Your payout is scheduled to arrive in your bank account ending in 4242 by October 24, 2025. Payout period: October 8 - October 21. Gross volume: $15,200.00. Fees: $441.50. Refunds: $1,911.00. Net: $12,847.50. View detailed breakdown in your Stripe dashboard."
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "team@openai.com",
+        "recipient": "alice@example.com",
+        "subject": "Your OpenAI API usage for October",
+        "timestamp": "2025-10-23T12:00:00Z",
+        "body": "Your API usage summary for October 2025: GPT-4 API calls: 45,200 requests. Total tokens: 18.4M (input: 12.2M, output: 6.2M). Estimated cost: $347.80. Most active day: October 18 (8,400 requests). Your current rate limit: 10,000 requests/min. View detailed logs at platform.openai.com/usage"
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "notifications@linkedin.com",
+        "recipient": "alice@example.com",
+        "subject": "Your post is getting a lot of attention!",
+        "timestamp": "2025-10-24T15:30:00Z",
+        "body": "Your post about 'Building RAG systems with local LLMs' has reached 15,000 impressions and 450 engagements in the past 24 hours! Top viewers: Software Engineers (42%), Data Scientists (28%), CTOs (15%). 23 people shared your post. 67 new profile views. Keep the momentum going!"
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "calendar@google.com",
+        "recipient": "alice@example.com",
+        "subject": "Event reminder: Team All-Hands tomorrow at 2 PM",
+        "timestamp": "2025-10-25T10:00:00Z",
+        "body": "Reminder: Team All-Hands Meeting. Date: October 26, 2025, 2:00 PM - 3:30 PM PST. Location: Zoom (link in calendar). Agenda: Q3 retrospective, Q4 goals, new hire introductions, engineering roadmap. Please review the pre-read document shared in Slack. Meeting organizer: Sarah Chen (sarah@company.com)"
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "security@notion.so",
+        "recipient": "alice@example.com",
+        "subject": "New login from Chrome on Windows",
+        "timestamp": "2025-10-26T07:22:00Z",
+        "body": "We noticed a new login to your Notion account. Device: Chrome 118.0 on Windows 11. Location: Seattle, WA (approximate). IP address: 198.51.100.42. Time: October 26, 2025 at 7:22 AM PST. If this was you, you can safely ignore this email. If not, please secure your account immediately at notion.so/settings/security"
+    },
+    {
+        "user_id": "alice@example.com",
+        "sender": "receipts@uber.com",
+        "recipient": "alice@example.com",
+        "subject": "Your Wednesday morning trip with Uber",
+        "timestamp": "2025-10-26T08:45:00Z",
+        "body": "Thanks for riding with Uber! Trip date: October 26, 2025, 8:15 AM. From: 1234 Market St, San Francisco. To: 567 Howard St, San Francisco. Distance: 2.4 miles. Duration: 12 minutes. Fare: $18.50 (includes $3.50 surge). Driver: Michael (4.95★). Car: Silver Toyota Prius. You tipped $4.00. Total: $22.50 charged to Visa ••••1234"
+    }
+]
