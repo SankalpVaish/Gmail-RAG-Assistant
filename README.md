@@ -1,122 +1,182 @@
-#Gmail RAG Assistant (ReadMe)
+# Gmail RAG Assistant
 
-Overview
+**Search your email with AI — everything runs locally on your computer.**
 
-Gmail RAG Assistant is a local system that allows users to:
+Ask questions like "What's my API budget?" or "When is my flight?" and get instant answers from your Gmail, powered by a local AI model. Your data never leaves your machine.
 
-•	Fetch emails from Gmail
+![Python](https://img.shields.io/badge/Python-3.10+-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-orange)
 
-•	Split and store emails in a local vector database (ChromaDB)
+---
 
-•	Search emails semantically using embeddings
+## ✨ What It Does
 
-•	Generate answers via a local LLM (Ollama)
+- 📧 **Connects to your Gmail** and indexes your emails locally
+- 🔍 **Smart semantic search** - finds relevant emails even if they don't contain exact keywords
+- 🤖 **AI-powered answers** using Ollama (runs on your computer, not the cloud)
+- 🔒 **100% private** - no data sent to external servers after initial email fetch
+- 👥 **Multi-user support** - each person's data is strictly isolated
+- 🌐 **Beautiful web interface** - modern chat UI with streaming responses
 
-•	Support multiple users securely using metadata filtering
+---
 
-All data remains local and offline after ingestion.
-________________________________________
+## 🚀 Quick Start
 
-Features
+### 1. Install Requirements
 
-•	Gmail API integration with OAuth2
+**You need:**
+- Python 3.10 or newer
+- [Ollama](https://ollama.com/download) (free, runs the AI locally)
 
-•	Email parsing and chunking
+**Install Ollama:**
+```bash
+# Download from ollama.com/download or:
 
-•	Local vector storage with ChromaDB
+# Mac/Linux:
+curl -fsSL https://ollama.com/install.sh | sh
 
-•	Semantic search using SentenceTransformers embeddings
+# Windows: download the installer from ollama.com
+```
 
-•	Grounded responses from Ollama LLM
+**Pull the AI model:**
+```bash
+ollama pull llama3
+```
 
-•	Multi-user isolation using user_id metadata
+### 2. Install the App
 
-•	Unicode-safe (supports ₹, emojis, etc.)
+```bash
+# Clone this repo
+git clone https://github.com/YOUR_USERNAME/gmail-rag-assistant
+cd gmail-rag-assistant
 
-•	The system handles both Gmail and Google Drive files, converting non-text formats into indexable strings.
-________________________________________
+# Install Python dependencies
+pip install -r requirements.txt
+```
 
-Setup Instructions
+### 3. Try the Demo
 
-1.	Ollama must be installed.
+**No Gmail setup needed!** Start with synthetic data:
 
-2.	Install Python 3.10+
+```bash
+python app.py
+```
 
-3.	Install dependencies:
+Open **http://127.0.0.1:8100** in your browser, then:
+1. Click **"Load demo dataset"** (16 sample emails)
+2. Ask: *"How much is the API budget?"*
+3. Watch the AI answer with sources!
 
-4.	pip install google-auth google-auth-oauthlib google-api-python-client chromadb sentence-transformers beautifulsoup4
+---
 
-5.	Setup Google Cloud project
+## 📊 Demo vs Real Mode
 
-o	Enable Gmail API
+### 🎮 Demo Mode (No Setup)
+- Uses 16 synthetic emails
+- Try it instantly
+- See how it works
 
-o	Configure OAuth consent screen (External, add yourself as test user)
+### 🔐 Real Mode (Your Gmail)
+See [SETUP.md](SETUP.md) for Gmail integration — it's optional!
 
-o	Create OAuth Desktop credentials
+---
 
-o	Download credentials.json to project folder
-________________________________________
+## 💬 Example Questions
 
-Usage
+Once loaded (demo or real Gmail):
 
-Extraction
-•	Fetch Gmail emails
+- "What's my Stripe payout?"
+- "When is my flight to Austin?"
+- "Show me security alerts"
+- "Summarize recent emails"
+- "What's my hotel confirmation number?"
 
-•	Split into chunks
+The AI only answers from your actual emails — if it doesn't know, it says so.
 
-•	Store in ChromaDB with user_id metadata
+---
 
-Query
+## 🛡️ Privacy & Security
 
-•	Embed user question
+- ✅ **Emails stay on your computer** - stored in a local database
+- ✅ **AI runs locally** - Ollama never sends your data anywhere
+- ✅ **Multi-user isolation** - if multiple people use it, data never mixes
+- ✅ **Read-only Gmail access** - can't modify or delete emails
 
-•	Retrieve top-k chunks filtered by user_id
+After the initial Gmail sync, you can **disconnect from the internet** and everything still works.
 
-•	Generate answer via Ollama LLM
+---
 
-•	Returns grounded responses or “I don’t know” if no context
-________________________________________
-Multi-User Support
+## 🎨 Screenshots
 
-•	All email chunks tagged with user_id
+### Chat Interface
+<img src="docs/screenshot-chat.png" width="600" alt="Chat interface showing a question and AI response with sources">
 
-•	Queries filtered with where={"user_id": user_id}
+*Ask questions naturally and get instant answers with email sources*
 
-•	Prevents cross-user data leakage
-________________________________________
-Project Files
-File	Description
-credentials.json	Google OAuth2 credentials for Gmail API access.
+### Demo Data Viewer
+<img src="docs/screenshot-demo.png" width="600" alt="Modal showing 16 demo emails">
 
-Architecture.txt	Architecture used for the project.
+*Preview the demo dataset before loading*
 
-Extract_emails.py	Script to fetch Gmail emails, clean, chunk, and store them in ChromaDB with user_id metadata.
+### Isolation Test
+<img src="docs/screenshot-isolation.png" width="600" alt="Security test showing data isolation">
 
-Query_Ollama.py	Script to query the local vector database and generate answers using Ollama LLM.
+*Verify that user data never leaks*
 
-requirements.txt	Lists all Python dependencies for the project.
+---
 
-chroma_db/	Folder  that will be present after execution of Extract_enail.py where ChromaDB stores the persistent vector database (auto-created after first ingestion).
+## 🛠️ Technical Stack
 
-Demo_isolation.py	A script that demonstrates the Multi-User Support bonus by attempting to query one user's real data while authenticated as another, proving that cross-user queries return empty results.
+Built with modern, privacy-focused tools:
 
-Evaluation Report.docx	Evaluation Report summarizing the project's performance, the technical difficulties, and the limitations of the current design. 
+- **[FastAPI](https://fastapi.tiangolo.com/)** - Fast, modern web framework
+- **[ChromaDB](https://www.trychroma.com/)** - Local vector database for search
+- **[Ollama](https://ollama.com/)** - Run AI models locally (llama3)
+- **[SentenceTransformers](https://www.sbert.net/)** - Semantic search embeddings
+- **Vanilla JavaScript** - No framework bloat, just clean code
 
-fake_emails.json	This file contains a curated set of synthetic emails designed to test both retrieval accuracy and security boundaries.
+---
 
-FakeDemo.py	A script that demonstrates the Multi-User Support bonus by attempting to query one user's fake data while authenticated as another.
+## 📖 Documentation
 
-README.md	This file- overview, setup instructions, and file descriptions.
-________________________________________
+- **[SETUP.md](SETUP.md)** - Full Gmail integration guide
+- **[GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md)** - Deploy a demo to GitHub Pages
+- **[QUICKSTART.md](QUICKSTART.md)** - Detailed installation steps
 
-Run FakeDemo.py file to see a small demo of how the system works on fake dataset.
+---
 
-References
+## 🤝 Contributing
 
-•	Gmail API: https://developers.google.com/gmail/api
+Found a bug? Want to add a feature? PRs welcome!
 
-•	ChromaDB: https://www.trychroma.com/
+1. Fork the repo
+2. Create a feature branch
+3. Make your changes
+4. Test with the demo mode
+5. Submit a PR
 
-•	Ollama: https://ollama.com/
+---
 
-•	SentenceTransformers: https://www.sbert.net/
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) for details
+
+---
+
+## 🙏 Credits
+
+- Gmail API integration
+- ChromaDB for vector storage
+- Ollama for local LLM inference
+- Built as a technical demonstration of RAG (Retrieval-Augmented Generation)
+
+---
+
+## ⭐ Star This Repo
+
+If you find this useful, give it a star! It helps others discover the project.
+
+---
+
+**Questions?** Open an issue or check the [documentation](SETUP.md).
+
+Made with ❤️ for privacy-conscious AI enthusiasts.

@@ -2,6 +2,7 @@ import os
 import pickle
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from google.auth.exceptions import RefreshError
 from googleapiclient.discovery import build
 import base64
 from bs4 import BeautifulSoup
@@ -19,9 +20,22 @@ def gmail_authenticate():
             creds = pickle.load(token)
 
     if not creds or not creds.valid:
+        refreshed = False
+
         if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
+            try:
+                creds.refresh(Request())
+                refreshed = True
+            except RefreshError:
+                # The saved refresh token is dead — typically because the OAuth
+                # consent screen is still in "Testing" mode, where Google expires
+                # test-user refresh tokens after 7 days. Discard it and log in again.
+                print("Saved credentials expired or were revoked. Re-authenticating...")
+                creds = None
+                if os.path.exists('token.pickle'):
+                    os.remove('token.pickle')
+
+        if not refreshed:
             flow = InstalledAppFlow.from_client_secrets_file(
                 'credentials.json', SCOPES
             )
