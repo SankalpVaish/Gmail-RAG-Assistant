@@ -46,7 +46,7 @@ ollama pull llama3
 
 ```bash
 # Clone this repo
-git clone https://github.com/YOUR_USERNAME/gmail-rag-assistant
+git clone https://github.com/SankalpVaish/Gmail-RAG-Assistant
 cd gmail-rag-assistant
 
 # Install Python dependencies

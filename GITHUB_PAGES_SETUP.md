@@ -46,14 +46,8 @@ GitHub will build and deploy your site. This takes 1-2 minutes.
 
 Your site will be available at:
 ```
-https://YOUR_USERNAME.github.io/gmail-rag-assistant/
+https://sankalpvaish.github.io/Gmail-RAG-Assistant/
 ```
-
-Replace `YOUR_USERNAME` with your GitHub username.
-
-### 4. Update Repository Link (Optional)
-
-If you want the demo banner to link to your repo, edit [`static/index.html`](static/index.html) line 6 and replace `YOUR_USERNAME` with your GitHub username.
 
 ## How It Works
 
