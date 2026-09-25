@@ -129,14 +129,21 @@ function staticRetrieve(question, userId) {
   };
 }
 
-// Hardcoded answers for common demo questions
+// Hardcoded answers for common demo questions (user-specific)
 const MOCK_ANSWERS = {
-  "api budget": "The API integration project has been allocated $50,000 for Q4.",
-  "benefit enrollment": "The health insurance enrollment window closes on Friday, October 20th at 5 PM EST. You can choose between the PPO plan ($250/month) or the HMO plan ($180/month).",
-  "product launch": "The new product launch is scheduled for December 12th, 2025.",
-  "stripe payout": "Your Stripe payout of $12,847.50 is on the way, scheduled to arrive by October 24, 2025.",
-  "flight": "Your United Airlines flight UA 1847 departs San Francisco (SFO) on November 15, 2025 at 6:45 AM, arriving in Austin (AUS) at 12:10 PM CST.",
-  "default": "Based on the retrieved emails, I can provide information about budgets, benefit enrollment, product launches, payments, and travel arrangements. The answer depends on the specific emails available for this user.",
+  "sankalp@example.com": {
+    "api budget": "The API integration project has been allocated $50,000 for Q4.",
+    "benefit enrollment": "The health insurance enrollment window closes on Friday, October 20th at 5 PM EST. You can choose between the PPO plan ($250/month) or the HMO plan ($180/month).",
+  },
+  "bob@example.com": {
+    "product launch": "The new product launch is scheduled for December 12th, 2025.",
+    "flight": "Your United Airlines flight UA 1847 departs San Francisco (SFO) on November 15, 2025 at 6:45 AM, arriving in Austin (AUS) at 12:10 PM CST.",
+  },
+  "alice@example.com": {
+    "stripe payout": "Your Stripe payout of $12,847.50 is on the way, scheduled to arrive by October 24, 2025.",
+    "api usage": "Your OpenAI API usage for October was $347.80, with 45,200 requests totaling 18.4M tokens.",
+  },
+  "default": "Based on the retrieved emails, I can see some relevant information. Let me know if you'd like more specific details from any of the messages shown above.",
 };
 
 // ---------------------------------------------------------------- theme
@@ -405,13 +412,16 @@ async function askStatic(question, userId, answerEl, bodyEl) {
   const { documents, sources } = staticRetrieve(question, userId);
   const retrievalSeconds = ((Date.now() - startTime) / 1000).toFixed(3);
 
-  // Pick an answer based on keywords
+  // Pick an answer based on keywords (user-specific)
   const lowerQ = question.toLowerCase();
   let answer = null;
   let keywordMatched = false;
 
-  for (const [key, value] of Object.entries(MOCK_ANSWERS)) {
-    if (key !== "default" && lowerQ.includes(key)) {
+  // Get user-specific mock answers
+  const userAnswers = MOCK_ANSWERS[userId] || {};
+
+  for (const [key, value] of Object.entries(userAnswers)) {
+    if (lowerQ.includes(key)) {
       answer = value;
       keywordMatched = true;
       break;
