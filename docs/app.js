@@ -105,7 +105,7 @@ function staticRetrieve(question, userId) {
   // Score emails by keyword overlap
   const scored = userEmails.map((email) => {
     const text = `${email.subject} ${email.body}`.toLowerCase();
-    const words = lowerQ.split(/\s+/).filter((w) => w.length > 3);
+    const words = lowerQ.split(/\s+/).filter((w) => w.length >= 3);
     let score = 0;
     for (const word of words) {
       if (text.includes(word)) score += 1;
@@ -407,17 +407,23 @@ async function askStatic(question, userId, answerEl, bodyEl) {
 
   // Pick an answer based on keywords
   const lowerQ = question.toLowerCase();
-  let answer = MOCK_ANSWERS.default;
+  let answer = null;
+  let keywordMatched = false;
+
   for (const [key, value] of Object.entries(MOCK_ANSWERS)) {
-    if (lowerQ.includes(key)) {
+    if (key !== "default" && lowerQ.includes(key)) {
       answer = value;
+      keywordMatched = true;
       break;
     }
   }
 
-  // If no match, return "I don't know"
-  if (sources.length === 0) {
+  // If no keyword matched and no relevant emails found, return "I don't know"
+  if (!keywordMatched && sources.length === 0) {
     answer = "I don't know — I couldn't find any relevant emails for this user.";
+  } else if (!keywordMatched) {
+    // Keyword didn't match but we have sources, use default
+    answer = MOCK_ANSWERS.default;
   }
 
   // Mock streaming: show cursor and type out answer
